@@ -13,10 +13,24 @@ Remember that a web server receives HTTP requests, execute some code depending o
 
 To decide on what code to execute depending on the request, internally Sinatra keeps a "routing" table, which associates a given request **method and path** to a block of Ruby code:
 
-|Method|Path|Ruby code|
-|-|-|-|
-|GET|/|`# some code to execute`
-|POST|/|`# some different code to execute`
+| Method | Path | Ruby code                          |
+| ------ | ---- | ---------------------------------- |
+| GET    | /    | `# some code to execute`           |
+| POST   | /    | `# some different code to execute` |
+
+<details>
+
+  <summary>:speech_balloon: Are these like methods in Ruby classes?</summary>
+
+  ---
+
+  No. These are a different kind of method — a HTTP method.
+
+  Each HTTP request comes with a label called a method which tells the server what kind of request it is. Common methods are GET (usually used to retrieve data) and POST (usually used to send data).
+
+  ---
+
+</details>
 
 Different requests will execute different code in our Sinatra application, and lead to different responses being sent back.
 
@@ -38,13 +52,11 @@ class Application < Sinatra::Base
   #  - a GET method
   #  - the path /
   get '/' do
-    # The code here is executed when a request is received,
-    # and need to send a response. 
+    # The code here is executed when a request is received and we need to 
+    # send a response. 
 
-    # We can simply return a string which
-    # will be used as the response content.
-    # Unless specified, the response status code
-    # will be 200 (OK).
+    # We can return a string which will be used as the response content.
+    # Unless specified, the response status code will be 200 (OK).
     return 'Some response data'
   end
 end
@@ -55,8 +67,11 @@ The Ruby block between the `do` and `end` associated with a method and path is c
 When Sinatra received a request, it looks through all the route blocks configured in that class, and execute the code of the first one matching the request.
 
 ```ruby
-# Example when Sinatra receives a request
+# Let's look at an example where Flask receives this request:
 # GET /
+
+# There are a number of routes. We'll look through each one in turn and see if
+# it matches.
 
 class Application < Sinatra::Base 
   # ...
