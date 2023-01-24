@@ -81,7 +81,13 @@ post '/posts' do
 end
 
 def invalid_request_parameters?
-  params[:title] == nil || params[:content] == nil
+  # Are the params nil?
+  return true if params[:title] == nil || params[:content] == nil
+
+  # Are they empty strings?
+  return true if params[:title] == "" || params[:content] == ""
+
+  return false
 end
 ```
 

@@ -1,4 +1,4 @@
-# Deploying your Web server (on Render)
+# Deploying your web server (on Render)
 
 _**This is a Makers Vine.** Vines are designed to gradually build up
 sophisticated skills. They contain a mixture of text and video, and may contain
@@ -22,7 +22,7 @@ tier you can use for simple projects.
 First, [you'll need to create an
 account](https://dashboard.render.com/register). Then follow the steps below.
 
-## Project Setup
+## Project setup
 
 This guidance assumes you have a small Ruby + Sinatra web application you want
 to deploy. 
@@ -46,7 +46,9 @@ $ git commit -m "Setup for deploy"
 $ git push -u origin main
 ```
 
-## Setting Up The Server on Render
+## Setting up the server on Render
+
+If your web application connects to a PostgreSQL database, [follow this section first to setup the Database](#using-a-postgresql-database-on-render) before setting up the web server.
 
 1. On [the dashboard](https://dashboard.render.com/), select "New Web Service"
 2. You'll need to connect your Github repository containing your project.
@@ -61,7 +63,7 @@ $ git push -u origin main
 _You might have to wait a bit (sometimes up to an hour) before the web
 application is accessible via that URL._
 
-## Using a PostgreSQL Database on Render
+## Using a PostgreSQL database on Render
 
 ### Step 1 - Creating the database on Render
 

@@ -35,7 +35,11 @@ $ rackup
 [2022-05-27 12:26:42] INFO  WEBrick::HTTPServer#start: pid=87298 port=9292
 ```
 
-We can now send HTTP requests using `curl`:
+The web server program is now running "inside" this terminal. We also say that the program is _attached_ to the terminal. It will now run continuously, waiting to receive incoming HTTP requests.
+
+If we close this terminal window, we will also terminate the server. A cleaner way of stopping the server is to use the keyboard shortcut `CTRL+C`.
+
+Once the server is running, we can send HTTP requests to it using `curl`:
 
 ```
 curl http://localhost:9292
