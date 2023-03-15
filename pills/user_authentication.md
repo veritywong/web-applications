@@ -49,7 +49,8 @@ class UserRepository
     return nil if user.nil?
 
     # Compare the submitted password with the encrypted one saved in the database
-    if submitted_password == BCrypt::Password.new(user.password)
+    stored_password = BCrypt::Password.new(user.password)
+    if stored_password == submitted_password
       # login success
     else
       # wrong password
@@ -157,6 +158,7 @@ You can also create an index page at `GET /` which returns a page indicating whe
 ## Exercise (with a database)
 
 Work through the same exercise as above, but this time, use the database to store user accounts. You should also use a Repository class to find and authenticate the user against the password submitted via the login form.
+
 
 <!-- BEGIN GENERATED SECTION DO NOT EDIT -->
 
