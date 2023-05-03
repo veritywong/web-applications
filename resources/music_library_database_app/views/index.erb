@@ -6,13 +6,13 @@
     <h1>Albums</h1>
 
     <div>
-      Title: Doolittle
-      Released: 1989
+      Title: <%= @albums.first.title %>
+      Released: <%= @albums.first.release_year %>
     </div>
 
     <div>
-      Title: Surfer Rosa
-      Released: 1988
+      Title: <%= @albums[1].title %>
+      Released: <%= @albums[1].release_year %>
     </div>
 
     <!-- ... -->
