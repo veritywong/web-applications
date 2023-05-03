@@ -14,11 +14,19 @@ class Application < Sinatra::Base
     also_reload 'lib/artist_repository'
   end
 
+  get '/' do
+    return erb(:index)
+  end
+
+  get '/about' do
+    return erb(:about)
+  end
+
   get '/albums' do
     repo = AlbumRepository.new
     @albums = repo.all
 
-    return erb(:index)
+    return erb(:albums)
 
     # first solution:
     # response = albums.map do |album|
@@ -46,7 +54,7 @@ class Application < Sinatra::Base
     # @album = repo.find(params[:id])
     @artist = artist_repo.find(@album.artist_id)
 
-    return erb(:album)
+    return erb(:album_id)
   end
 
   post '/albums' do
