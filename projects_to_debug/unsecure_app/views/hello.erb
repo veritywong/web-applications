@@ -6,6 +6,10 @@
   </head>
   <body>
     <p>
+      <% if @name.include?("<script>") %>
+        <% status 400 %>
+        <% return 'wrong input' %>
+      <% end %>
       Hi <%= @name %>!
     </p>
   </body>
