@@ -44,6 +44,10 @@ class Application < Sinatra::Base
     
   end
 
+  get '/albums/new' do
+    return erb(:album_new)
+  end
+
   get '/albums/:id' do
     id = params[:id]
 
@@ -80,6 +84,10 @@ class Application < Sinatra::Base
     #   artist.name
     # end.join(', ')
     # return response
+  end
+
+  get '/artists/new' do
+    return erb(:artist_new)
   end
 
   get '/artists/:id' do

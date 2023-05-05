@@ -43,6 +43,19 @@ describe Application do
       end
     end
 
+    context 'GET /albums/new' do
+      it 'should return form' do
+        response = get('/albums/new')
+
+        expect(response.status).to eq(200)
+        expect(response.body).to include('<form action="/albums" method="POST">')
+        expect(response.body).to include('<input type="text" name="title">')
+        expect(response.body).to include('<input type="text" name="release_year">')
+        expect(response.body).to include('<input type="text" name="artist_id">')
+        expect(response.body).to include('<input type="submit" value="Submit album">')
+      end
+    end
+
     context 'POST /albums' do
       it 'should create a new albums' do
         response = post('/albums', title: 'OK Computer', release_year: '1997', artist_id: '1')
@@ -77,6 +90,18 @@ describe Application do
       end
     end
 
+    context 'GET /artists/new' do
+      it 'returns an html form' do
+        response = get('/artists/new')
+
+        expect(response.status).to eq 200
+        expect(response.body).to include '<form action="/artists" method="POST">'
+        expect(response.body).to include '<input type="text" name="name">'
+        expect(response.body).to include '<input type="text" name="genre">'
+        expect(response.body).to include '<input type="submit" value="Submit artist">'
+      end
+    end
+
     context 'GET /artists/:id' do
       it 'returns artist 1' do
         response = get('/artists/1')
@@ -85,6 +110,7 @@ describe Application do
         expect(response.body).to include('<h1>Pixies</h1>')
       end
     end
+
 
     context 'POST /artists' do
       it 'should create a new artist' do
@@ -100,3 +126,10 @@ describe Application do
 
   end
 end
+
+
+# In the project music_library_database_app.
+
+# Test-drive and implement a form page to add a new album.
+
+# You should then be able to use the form in your web browser to add a new album, and see this new album in the albums list page.
